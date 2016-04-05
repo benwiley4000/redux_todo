@@ -1,5 +1,9 @@
 const React = require('react');
 
+const store = require('../stores/todoapp');
+
+let nextTodoId = 0;
+
 const AddTodo = ({
   onAddClick
 }) => {
@@ -10,7 +14,11 @@ const AddTodo = ({
         input = node;
       }} />
       <button onClick = {() => {
-        onAddClick(input.value);
+        store.dispatch({
+          type: 'ADD_TODO',
+          id: nextTodoId++,
+          text: input.value
+        });
         input.value = '';
       }}>
         Add Todo
