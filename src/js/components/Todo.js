@@ -1,7 +1,5 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
-
 const Todo = ({
   onClick,
   completed,

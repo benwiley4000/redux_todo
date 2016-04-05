@@ -1,10 +1,9 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
-
 const FilterLink = ({
   filter,
   currentFilter,
+  onClick,
   children
 }) => {
   if (filter === currentFilter) {
@@ -15,10 +14,7 @@ const FilterLink = ({
       href='#'
       onClick={event => {
         event.preventDefault();
-        store.dispatch({
-          type: 'SET_VISIBILITY_FILTER',
-          filter
-        })
+        onClick(filter);
       }}
     >
       {children}

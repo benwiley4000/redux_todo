@@ -1,6 +1,5 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
 const Todo = require('./Todo');
 
 const TodoList = ({
