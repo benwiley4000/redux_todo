@@ -1,35 +1,22 @@
-var expect = require('expect');
+const expect = require('expect');
+const deepFreeze = require('deep-freeze');
 
-const counter = (state, action) => {
-  state = state || 0;
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}
+const counter = require('./src/js/reducer.js');
 
-expect(
-  counter(0, { type: 'INCREMENT' })
-).toEqual(1);
+const addCounter = (list) => {
+  return list.concat([0]);
+};
 
-expect(
-  counter(1, { type: 'INCREMENT' })
-).toEqual(2);
+const testAddCounter = () => {
+  const listBefore = [];
+  const listAfter = [0];
 
-expect(
-  counter(2, { type: 'DECREMENT' })
-).toEqual(1);
+  deepFreeze(listBefore);
 
-expect(
-  counter(1, { type: 'DECREMENT' })
-).toEqual(0);
+  expect(
+    addCounter(listBefore)
+  ).toEqual(listAfter);
+};
 
-expect(
-  counter(undefined, {})
-).toEqual(0);
-
+testAddCounter();
 console.log('Tests passed!');

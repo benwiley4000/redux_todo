@@ -18,7 +18,7 @@ gulp.task('browserify', function() {
       this.emit('end');
     })
     .pipe(source('main.js'))
-    .pipe(gulp.dest('public/'));
+    .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('watch', function () {
