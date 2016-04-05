@@ -1,10 +1,9 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
-
 let nextTodoId = 0;
 
 const AddTodo = ({
+  store,
   onAddClick
 }) => {
   let input;

@@ -1,11 +1,10 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
-
 const Link = require('./Link');
 
 class FilterLink extends React.Component {
   componentDidMount () {
+    const { store } = this.props;
     this.unsubscribe = store.subscribe(() => 
       this.forceUpdate()
     );
@@ -17,6 +16,7 @@ class FilterLink extends React.Component {
 
   render () {
     const props = this.props;
+    const { store } = props;
     const state = store.getState();
 
     return (

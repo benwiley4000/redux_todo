@@ -1,16 +1,14 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
-
 const AddTodo = require('./AddTodo');
 const VisibleTodoList = require('./VisibleTodoList');
 const Footer = require('./Footer');
 
-const TodoApp = () => (
+const TodoApp = ({ store }) => (
   <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
+    <AddTodo store={store} />
+    <VisibleTodoList store={store} />
+    <Footer store={store} />
   </div>
 );
 

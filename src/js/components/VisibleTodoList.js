@@ -1,7 +1,5 @@
 const React = require('react');
 
-const store = require('../stores/todoapp');
-
 const TodoList = require('./TodoList');
 
 const getVisibleTodos = (
@@ -26,6 +24,7 @@ const getVisibleTodos = (
 
 class VisibleTodoList extends React.Component {
   componentDidMount () {
+    const { store } = this.props;
     this.unsubscribe = store.subscribe(() => 
       this.forceUpdate()
     );
@@ -36,6 +35,7 @@ class VisibleTodoList extends React.Component {
   }
 
   render () {
+    const { store } = this.props;
     const state = store.getState();
 
     return (
