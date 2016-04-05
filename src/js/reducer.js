@@ -46,4 +46,28 @@ const todos = (state, action) => {
   }
 };
 
-module.exports = { counter, todos };
+const visibilityFilter = (state, action) => {
+  state = state || 'SHOW_ALL';
+  switch (action.type) {
+    case 'SET_VISIBILITY_FILTER':
+      return action.filter;
+    default:
+      return state;
+  }
+};
+
+const todoApp = (state, action) => {
+  state = state || {};
+  return {
+    todos: todos(
+      state.todos,
+      action
+    ),
+    visibilityFilter: visibilityFilter(
+      state.visibilityFilter,
+      action
+    )
+  };
+};
+
+module.exports = { counter, todoApp };
