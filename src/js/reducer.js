@@ -10,4 +10,21 @@ const counter = (state, action) => {
   }
 };
 
-module.exports = counter;
+const todos = (state, action) => {
+  state = state || [];
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        {
+          id: action.id,
+          text: action.text,
+          completed: false
+        }
+      ];
+    default:
+      return state;
+  }
+};
+
+module.exports = { counter, todos };

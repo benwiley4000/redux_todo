@@ -4,22 +4,22 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const { createStore } = require('redux');
 
-const reducer = require('./reducer');
+const { counter } = require('./reducer');
 const Counter = require('./components/counter.js');
 
-const store = createStore(reducer);
+const counterStore = createStore(counter);
 
 const render = () => {
   ReactDOM.render(
     <Counter
-      value={ store.getState() }
+      value={ counterStore.getState() }
       onIncrement={() =>
-        store.dispatch({
+        counterStore.dispatch({
           type: 'INCREMENT'
         })
       }
       onDecrement={() =>
-        store.dispatch({
+        counterStore.dispatch({
           type: 'DECREMENT'
         })
       }
@@ -28,5 +28,5 @@ const render = () => {
   );
 };
 
-store.subscribe(render);
+counterStore.subscribe(render);
 render();
