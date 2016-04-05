@@ -9,7 +9,7 @@ const store = require('./stores/todoapp');
 const render = () => {
   ReactDOM.render(
     <TodoApp
-      todos={store.getState().todos}
+      {...store.getState()}
     />,
     document.getElementById('main')
   );
