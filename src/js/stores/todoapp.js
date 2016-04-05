@@ -1,16 +1,4 @@
-const { combineReducers } = require('redux');
-
-const counter = (state, action) => {
-  state = state || 0;
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-};
+const { combineReducers, createStore } = require('redux');
 
 const todo = (state, action) => {
   switch (action.type) {
@@ -63,4 +51,6 @@ const todoApp = combineReducers({
   visibilityFilter
 });
 
-module.exports = { counter, todoApp };
+const todoStore = createStore(todoApp);
+
+module.exports = todoStore;
