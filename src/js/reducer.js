@@ -1,3 +1,5 @@
+const { combineReducers } = require('redux');
+
 const counter = (state, action) => {
   state = state || 0;
   switch (action.type) {
@@ -56,18 +58,9 @@ const visibilityFilter = (state, action) => {
   }
 };
 
-const todoApp = (state, action) => {
-  state = state || {};
-  return {
-    todos: todos(
-      state.todos,
-      action
-    ),
-    visibilityFilter: visibilityFilter(
-      state.visibilityFilter,
-      action
-    )
-  };
-};
+const todoApp = combineReducers({
+  todos,
+  visibilityFilter
+});
 
 module.exports = { counter, todoApp };
