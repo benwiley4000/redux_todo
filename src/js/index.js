@@ -5,7 +5,7 @@ const ReactDOM = require('react-dom');
 const { createStore } = require('redux');
 
 const { counter } = require('./reducer');
-const Counter = require('./components/counter.js');
+const Counter = require('./components/counter');
 
 const counterStore = createStore(counter);
 
