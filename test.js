@@ -1,3 +1,5 @@
+var expect = require('expect');
+
 function counter (state, action) {
   return state;
 }
