@@ -8,7 +8,24 @@ const reducer = require('./reducers/todoapp');
 
 const TodoApp = require('./components/TodoApp');
 
+class Provider extends React.Component {
+  getChildContext () {
+    return {
+      store: this.props.store
+    };
+  }
+
+  render () {
+    return this.props.children;
+  }
+}
+Provider.childContextTypes = {
+  store: React.PropTypes.object
+};
+
 ReactDOM.render(
-  <TodoApp store={createStore(reducer)} />,
+  <Provider store={createStore(reducer)}>
+    <TodoApp />
+  </Provider>,
   document.getElementById('main')
 );

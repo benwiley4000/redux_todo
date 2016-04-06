@@ -2,10 +2,7 @@ const React = require('react');
 
 let nextTodoId = 0;
 
-const AddTodo = ({
-  store,
-  onAddClick
-}) => {
+const AddTodo = (props, { store }) => {
   let input;
   return (
     <div>
@@ -24,6 +21,10 @@ const AddTodo = ({
       </button>
     </div>
   );
+};
+
+AddTodo.contextTypes = {
+  store: React.PropTypes.object
 };
 
 module.exports = AddTodo;
