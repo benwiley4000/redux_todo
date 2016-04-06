@@ -1,7 +1,7 @@
 const React = require('react');
 const { connect } = require('react-redux');
 
-let nextTodoId = 0;
+const { addTodo } = require('../actioncreators/todoapp');
 
 let AddTodo = ({ dispatch }) => {
   let input;
@@ -11,11 +11,7 @@ let AddTodo = ({ dispatch }) => {
         input = node;
       }} />
       <button onClick = {() => {
-        dispatch({
-          type: 'ADD_TODO',
-          id: nextTodoId++,
-          text: input.value
-        });
+        dispatch(addTodo(input.value));
         input.value = '';
       }}>
         Add Todo
